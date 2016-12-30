@@ -1,11 +1,14 @@
 # saltdb
+
 A basic Flask/SQLAlchemy web gui to view [salt](https://saltstack.com) minion return data and job history
 
-![screenshot1](screenshot1.jpg)
-![screenshot2](screenshot2.jpg)
-![screenshot3](screenshot3.jpg)
+![screenshot1](screenshot1.jpg "Change List") 
+_ _ _
+![screenshot2](screenshot2.jpg "Return List")
+_ _ _
+![screenshot3](screenshot3.jpg "Return Detail")
 
-CSS provided by the fine folks at [Boostrap](http://getbootstrap.com/)
+CSS provided by the fine folks at [Bootstrap](http://getbootstrap.com/)
 
 ## FAQ
 Q. Why does this exist?
