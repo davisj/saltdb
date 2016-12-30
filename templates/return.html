@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    {{ title('Return Detail') }}
+    <h4>return id: {{ return_data.idx }}</h4>
+    job id: <a href="{{url_for('job_detail', jid=return_data.jid)}}">{{ return_data.jid }}</a><br/>
+    minion id: <a href="{{url_for('minion_detail', minion_id=return_data.id)}}">{{ return_data.id }}</a><br/>
+    function: {{ return_data.fun }}<br/>
+    args: {{ return_data.full_ret['fun_args'] }}<br/>
+    success: {{ return_data.success }}<br/>
+    Alter Time: {{ return_data.alter_time }}<p/>
+    Changes: {{ return_data.changes }}
+    <hr/>
+    {% for state, result in return_data.return.items() %}
+      {% if result.changes|length > 0 %}
+      <br/><b>{{ result.__id__ }}</b>
+      {% for key, val in result.changes.items() %}
+      <pre class="prettyprint">
+{{ key }}:
+{{ val.diff|default(val) -}}
+      </pre>
+      {% endfor %}
+      {% endif %}
+    {% endfor %}
+
+{% endblock %}

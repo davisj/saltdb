@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {{ title('Minion List') }}
+    {% for minion in minions.items %}
+    <a href="{{url_for('minion_detail', minion_id=minion.id)}}">{{minion.id}}</a><br/>
+    {% endfor %}
+
+{{ pager(url_for('minion_list'), minions) }}
+
+{% endblock %}

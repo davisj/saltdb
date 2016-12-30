@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {{ title('Minion Returns') }}
+    <h4>{{id}}</h4>
+    {% for r in returns.items %}
+    <a href="{{url_for('return_detail', id=r.idx)}}">{{ r.idx }} : {{ r.jid }}</a> fun: {{ r.fun }} success: {{ r.success }} Alter Time: {{ r.alter_time }}<br/>
+    {% endfor %}
+
+{{ pager(url_for('minion_detail', minion_id=id), returns, first='Newest', last='Oldest') }}
+
+{% endblock %}

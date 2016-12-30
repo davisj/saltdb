@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {{ title('Job Detail') }}
+    <h4>Job id: {{job.jid}}</h4>
+    <h5>fun: {{ job.load['fun'] }}</h5>
+    arg: {{ job.load['arg'] }}<br/>
+    tgt: {{ job.load['tgt'] }}<br/>
+    <p/>
+    {% for r in returns %}
+    return id: <a href="{{url_for('return_detail', id=r.idx)}}">{{ r.idx }}</a><br/>
+    minion id: <a href="{{url_for('minion_detail', minion_id=r.id)}}">{{ r.id }}</a><br/>
+    success: {{ r.success }}<br/>
+    Alter Time: {{ r.alter_time }}<p/>
+    {% endfor %}
+
+{% endblock %}

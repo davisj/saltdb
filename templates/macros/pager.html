@@ -1,0 +1,11 @@
+{% macro pager(base_path, objects, first='', last='') %}
+{% if objects.pages > 1 %}
+<ul class="pagination">
+  <li{% if page == 1 %} class="active"{% endif %}><a href="{{ base_path }}/1">{{ first }} (1)</a></li>
+  {% if objects.has_prev and objects.prev_num !=1 %}<li><a href="{{ base_path }}/{{ objects.prev_num }}">{{ objects.prev_num }}</a></li>{% endif %}
+  {% if page not in (1, objects.pages) %}<li class="active"><a href="{{ base_path }}/{{ page }}">{{ page }}</a></li>{% endif %}
+  {% if objects.has_next and objects.next_num != objects.pages %}<li><a href="{{ base_path }}/{{ objects.next_num }}">{{ objects.next_num }}</a></li>{% endif %}
+  <li{% if page == objects.pages %} class="active"{% endif %}><a href="{{ base_path }}/{{ objects.pages }}">{{ last }} ({{ objects.pages }})</a></li>
+</ul>
+{% endif %}
+{% endmacro %}

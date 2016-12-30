@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {{ title('Return List') }}
+    <p><sub> * = config changes enforced </sub></p>
+    {% for r in returns.items %}
+    job id: <a href="{{url_for('return_detail', id=r.idx)}}">{{r.jid}} : {{r.idx}}</a> {% if r.changes %}*{% endif %}  <br/>
+    {% endfor %}
+
+{{ pager(url_for('return_list'), returns, first='Newest', last='Oldest') }}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {{ title('Configuration Changes') }}
+    {% for r in returns.items %}
+    <a href="{{url_for('return_detail', id=r.idx)}}">{{r.jid}}</a> : <b>{{r.id}}</b> @ {{r.alter_time}}<br/>
+    <ul>
+      {% for state, result in r.return.items() %}
+        {% if result.changes|length > 0 %}
+        <li>{{result.__id__}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% endfor %}
+
+{{ pager(url_for('change_list'), returns, first='Newest', last='Oldest') }}
+
+{% endblock %}

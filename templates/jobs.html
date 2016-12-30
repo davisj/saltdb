@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{{ title('Job List') }}
+
+<table>
+    <tr>
+        <th> Job ID</th>
+        <th> Function</th>
+        <th> Arguments</th>
+        <th> Target</th>
+    </tr>
+    {% for jid in jids.items %}
+    <tr class="{{ loop.cycle('odd', 'even') }}">
+        <td><a href="{{ url_for('job_detail', jid=jid.jid) }}">{{ jid.jid }}</a></td>
+        <td class="text-center">{{ jid.load.fun }}</td>
+        <td>{% for arg in jid.load.arg %} {{ arg }} {% endfor %}</td>
+        <td>{{ jid.load.tgt }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{{ pager(url_for('job_list'), jids, first='Newest', last='Oldest') }}
+
+{% endblock %}
