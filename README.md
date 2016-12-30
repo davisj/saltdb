@@ -12,12 +12,15 @@ CSS provided by the fine folks at [Bootstrap](http://getbootstrap.com/)
 
 ## FAQ
 Q. Why does this exist?
-A. Two reasons. 1) I wanted and excuse to try out Flask and SQLAlchemy. 2) Unless you can afford the enterprise version, salt lacks a reporting interface and I need a way to provide some visiility for non salt savvy folks into what changes salt is making to our infrastructure.
+
+A. Two reasons. 1) I wanted and excuse to try out Flask and SQLAlchemy. 2) Unless you can afford the enterprise version, salt lacks a reporting interface and I need a way to provide non salt savvy folks visibility into what changes salt is making to an infrastructure.
 
 Q. Why did you hard code the DB credentials and the pagination count?
+
 A. I'm lazy. But, yes, I realize that's bad form and that should go on the TODO list.
 
 Q. Why doesn't it support job submission?
+
 A. I don't personally care about job submission via a web gui right now. Patches are welcome!!!
 
 ## Notes
