@@ -284,20 +284,19 @@ def save_load(jid, load, minions=None):
     '''
     Save the load to the specified jid id
     '''
-    if load['fun'] not in ('saltutil.find_job',):
-        with _get_serv(commit=True) as cur:
+    with _get_serv(commit=True) as cur:
 
-            sql = '''INSERT INTO jids
-                   (jid, load)
-                    VALUES (%s, %s)'''
+        sql = '''INSERT INTO jids
+               (jid, load)
+                VALUES (%s, %s)'''
 
-            try:
-                cur.execute(sql, (jid, psycopg2.extras.Json(load)))
-            except psycopg2.IntegrityError:
-                # https://github.com/saltstack/salt/issues/22171
-                # Without this try:except: we get tons of duplicate entry errors
-                # which result in job returns not being stored properly
-                pass
+        try:
+            cur.execute(sql, (jid, psycopg2.extras.Json(load)))
+        except psycopg2.IntegrityError:
+            # https://github.com/saltstack/salt/issues/22171
+            # Without this try:except: we get tons of duplicate entry errors
+            # which result in job returns not being stored properly
+            pass
 
 
 def save_minions(jid, minions):  # pylint: disable=unused-argument
