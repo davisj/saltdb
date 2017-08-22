@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    {{ title('Configuration Changes') }}
+    {{ title('Change List') }}
     {% for r in returns.items %}
     <a href="{{url_for('return_detail', id=r.idx)}}">{{r.jid}}</a> : <b>{{r.id}}</b> @ {{r.alter_time}}<br/>
     <ul>
