@@ -2,7 +2,7 @@
 
 A basic Flask/SQLAlchemy web gui to view [salt](https://saltstack.com) minion return data and job history
 
-![screenshot1](screenshot1.jpg "Change List") 
+![screenshot1](screenshot1.jpg "Change List")
 _ _ _
 ![screenshot2](screenshot2.jpg "Return List")
 _ _ _
@@ -24,7 +24,7 @@ Q. Why doesn't it support job submission?
 A. I don't personally care about job submission via a web gui right now. Patches are welcome!!!
 
 ## Notes
-saltdb uses a lightly modified version of the upstream pgjasonb returner and associated postgresql db schema.
+saltdb uses a lightly modified version of the upstream [pgjasonb returner](https://github.com/saltstack/salt/blob/develop/salt/returners/pgjsonb.py) and associated postgresql db schema.
 
 ### Example Setup
 #### 1. Install and configure a postgresql database
