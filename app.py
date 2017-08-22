@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask import render_template
 from flask_sqlalchemy import SQLAlchemy
 
-ITEMS_PER_PAGE = 10
+ITEMS_PER_PAGE = 25
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://salt:salt@127.0.0.1:5432/salt'
@@ -23,6 +23,7 @@ class Returns(db.Model):
 VIEWS
 '''
 
+@app.route('/')
 @app.route('/minions/')
 @app.route('/minions/page')
 @app.route('/minions/page/<int:page>')
@@ -62,7 +63,6 @@ def return_detail(id):
     return_data = Returns.query.get(id)
     return render_template('return.html', id=id, return_data=return_data)
 
-@app.route('/')
 @app.route('/changes/')
 @app.route('/changes/page')
 @app.route('/changes/page/<int:page>')
